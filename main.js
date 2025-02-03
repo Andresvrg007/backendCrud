@@ -8,12 +8,12 @@ app.use(cors());
 app.use(express.json());
 
 const db = mysql.createConnection({
-    host: process.env.MYSQLHOST || 'mysql.railway.internal',
+    host: process.env.MYSQLHOST || 'mysql-bltq.railway.internal', // Asegura que esto coincida con la variable
     user: process.env.MYSQLUSER || 'root',
-    password: process.env.MYSQLPASSWORD || 'tu_contraseña',
+    password: process.env.MYSQLPASSWORD || 'eNZCWtxTIdQdeIjItsXSvGARCqgdWtQw',
     database: process.env.MYSQLDATABASE || 'railway',
     port: process.env.MYSQLPORT || 3306
-});
+  });
 
 db.connect((err) => {
     if (err) {
@@ -25,6 +25,11 @@ db.connect((err) => {
 
     
 });
+console.log("🔍 Variables de conexión:");
+console.log("Host:", process.env.MYSQLHOST);
+console.log("Usuario:", process.env.MYSQLUSER);
+console.log("Base de datos:", process.env.MYSQLDATABASE);
+console.log("Puerto:", process.env.MYSQLPORT);
 
 
 app.get("/",(req,res)=>{
